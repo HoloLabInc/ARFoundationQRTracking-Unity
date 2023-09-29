@@ -16,6 +16,7 @@
     "com.unity.xr.arfoundation": "4.2.8",
     "com.unity.xr.arkit": "4.2.8",
     "jp.co.hololab.arfoundationqrtracking": "file:../../../packages/jp.co.hololab.arfoundationqrtracking",
+    "jp.co.hololab.arfoundationqrtracking.libraries": "file:../../../packages/jp.co.hololab.arfoundationqrtracking.libraries",
     "jp.co.hololab.arfoundationqrtracking.tests": "file:../../../packages/jp.co.hololab.arfoundationqrtracking.tests",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
