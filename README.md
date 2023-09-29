@@ -50,6 +50,7 @@ Then set `Max Number Of Moving Images` of `AR Tracked Image Manager` to a value 
 
 <img width="480" alt="AR Session Origin settings" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/88cbd96d-0bff-42f3-b909-4a33bee9b687">
 <br>
+<br>
 
 When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.
 
