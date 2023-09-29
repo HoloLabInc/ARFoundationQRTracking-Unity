@@ -58,6 +58,10 @@ For more details, please refer to the sample scripts.
 - [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
 - [TrackedQRVisualizer.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/TrackedQRVisualizer.cs)
 
+## Limitations
+
+QR codes which contain non-ASCII characters are not supported.
+
 ## License
 
 Apache License 2.0
