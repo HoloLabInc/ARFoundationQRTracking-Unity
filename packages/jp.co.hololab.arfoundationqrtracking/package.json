@@ -1,0 +1,10 @@
+{
+  "name": "jp.co.hololab.arfoundationqrtracking",
+  "version": "0.1.0",
+  "displayName": "AR Foundation QR Tracking",
+  "description": "A module for ARFoundation that enables QR code tracking",
+  "unity": "2021.3",
+  "author": {
+    "name": "HoloLab Inc."
+  }
+}
