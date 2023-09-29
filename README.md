@@ -2,7 +2,7 @@
 
 ARFoundationQRTracking-Unity is a module for QR Code tracking with AR Foundation.
 
-<img alt="Demo video of ARFoundationQRTracking-Unity" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/3b0f2488-ac65-4f5b-90a7-84e4c6c29cce" width="320px">
+<img alt="Demo video of ARFoundationQRTracking-Unity" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/033aadad-53cd-46d3-9cc1-111be88c7e4c" width="320px">
 
 ## Target Devices
 
@@ -48,7 +48,7 @@ Add the following components to the "AR Session Origin" object.
 
 Then set `Max Number Of Moving Images` of `AR Tracked Image Manager` to a value other than 0.
 
-<img width="480" alt="AR Session Origin settings" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/88cbd96d-0bff-42f3-b909-4a33bee9b687">
+<img width="480" alt="AR Session Origin settings" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/86a19b74-0bdb-43fe-8b60-a042df34f6e9">
 <br>
 <br>
 
