@@ -52,8 +52,7 @@ Then set `Max Number Of Moving Images` of `AR Tracked Image Manager` to a value 
 <br>
 <br>
 
-When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.
-
+When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.  
 For more details, please refer to the sample scripts.
 
 - [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
