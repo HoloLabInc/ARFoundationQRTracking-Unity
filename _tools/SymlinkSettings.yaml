@@ -1,0 +1,4 @@
+symlinks:
+  # Sample folder
+  - src: ..\packages\jp.co.hololab.arfoundationqrtracking\Samples~
+    dest: ..\unity\ARFoundationQRTracking\Assets\ARFoundationQRTracking.Samples
