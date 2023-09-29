@@ -29,6 +29,27 @@ Open `Packages\manifest.json` and add the following lines to the "dependencies" 
 "jp.co.hololab.arfoundationqrtracking.libraries": "https://github.com/HoloLabInc/ARFoundationQRTracking-Unity.git?path=packages/jp.co.hololab.arfoundationqrtracking.libraries",
 ```
 
+## Usage
+
+### a. Use sample scene
+
+Open "Package Manager" and select "AR Foundation QR Tracking" from the package list.  
+Then click the "Import" button of ARFoundationTrackingSample.
+
+`ARFoundationQRVisualizationSample.unity` is a sample scene for QR Code tracking.
+
+### b. Use your scene
+
+Add the following components to the "AR Session Origin" object.
+
+- `AR Tracked Image Manager`
+- `AR Foundation QR Tracker`
+- `Enable Scale Estimation for AR Kit`
+
+Then set `Max Number Of Moving Images` of `AR Tracked Image Manager` to a value other than `0`.
+
+<img width="360" alt="AR Session Origin settings" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/88cbd96d-0bff-42f3-b909-4a33bee9b687">
+
 ## License
 
 Apache License 2.0
