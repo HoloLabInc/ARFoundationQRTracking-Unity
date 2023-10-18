@@ -18,7 +18,7 @@ Import the following packages into your Unity project.
 - AR Foundation
 - ARKit XR Plugin (iOS)
 - ARCore XR Plugin (Android)
-- [UniTask](https://github.com/Cysharp/UniTask)
+- [UniTask](https://github.com/Cysharp/UniTask#upm-package)
 
 ### Install
 
