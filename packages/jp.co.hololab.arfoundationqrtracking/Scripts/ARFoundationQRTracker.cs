@@ -7,8 +7,11 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using ZXing;
-
 using ZXingResult = ZXing.Result;
+
+#if UNITY_IOS
+using HoloLab.ARFoundationQRTracking.iOS;
+#endif
 
 namespace HoloLab.ARFoundationQRTracking
 {
@@ -61,22 +64,69 @@ namespace HoloLab.ARFoundationQRTracking
         private void Awake()
         {
             cameraManager = FindObjectOfType<ARCameraManager>();
+            if (cameraManager == null)
+            {
+                Debug.LogError("ARCameraManager not found in scene.");
+                return;
+            }
 
             arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-            imageLibrary = arTrackedImageManager.CreateRuntimeLibrary() as MutableRuntimeReferenceImageLibrary;
-            arTrackedImageManager.referenceLibrary = imageLibrary;
+            if (arTrackedImageManager == null)
+            {
+                Debug.LogError("ARTrackedImageManager not found in scene.");
+                return;
+            }
+
+#if UNITY_IOS
+            if (arTrackedImageManager.requestedMaxNumberOfMovingImages == 0)
+            {
+                Debug.LogError("Max Number Of Moving Images of ARTrackedImagaManager should be more than 0.");
+            }
+#endif
+
+            try
+            {
+                imageLibrary = arTrackedImageManager.CreateRuntimeLibrary() as MutableRuntimeReferenceImageLibrary;
+                arTrackedImageManager.referenceLibrary = imageLibrary;
+            }
+            catch (NotSupportedException ex)
+            {
+                Debug.LogWarning(ex.Message);
+            }
+
+#if UNITY_IOS
+            var enableScaleEstimationForARKit = FindObjectOfType<EnableScaleEstimationForARKit>();
+            if (enableScaleEstimationForARKit == null)
+            {
+                gameObject.AddComponent<EnableScaleEstimationForARKit>();
+            }
+#endif
         }
 
         void OnEnable()
         {
-            cameraManager.frameReceived += OnCameraFrameReceived;
-            arTrackedImageManager.trackedImagesChanged += ARTrackedImageManager_trackedImagesChanged;
+            if (cameraManager != null)
+            {
+                cameraManager.frameReceived += OnCameraFrameReceived;
+            }
+
+            if (arTrackedImageManager != null)
+            {
+                arTrackedImageManager.trackedImagesChanged += ARTrackedImageManager_trackedImagesChanged;
+            }
         }
 
         void OnDisable()
         {
-            cameraManager.frameReceived -= OnCameraFrameReceived;
-            arTrackedImageManager.trackedImagesChanged -= ARTrackedImageManager_trackedImagesChanged;
+            if (cameraManager != null)
+            {
+                cameraManager.frameReceived -= OnCameraFrameReceived;
+            }
+
+            if (arTrackedImageManager != null)
+            {
+                arTrackedImageManager.trackedImagesChanged -= ARTrackedImageManager_trackedImagesChanged;
+            }
         }
 
         private void ARTrackedImageManager_trackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -180,6 +230,12 @@ namespace HoloLab.ARFoundationQRTracking
 
         private bool AddTrackingTarget(ZXingResult result)
         {
+            if (imageLibrary == null)
+            {
+                Debug.LogWarning("Image tracking is not available.");
+                return false;
+            }
+
             if (ZXingQRUtility.TryGetCellSize(result, out var cellSize) == false)
             {
                 return false;

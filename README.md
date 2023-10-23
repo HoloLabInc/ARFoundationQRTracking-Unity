@@ -44,11 +44,10 @@ Add the following components to the "AR Session Origin" object.
 
 - `AR Tracked Image Manager`
 - `AR Foundation QR Tracker`
-- `Enable Scale Estimation for AR Kit`
 
-Then set `Max Number Of Moving Images` of `AR Tracked Image Manager` to a value other than 0.
+Then set the `Max Number Of Moving Images` value in the `AR Tracked Image Manager` to more than 0.
 
-<img width="480" alt="AR Session Origin settings" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/86a19b74-0bdb-43fe-8b60-a042df34f6e9">
+<img width="480" alt="AR Session Origin setting" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/5af7a2e0-65eb-4c28-81e3-85b7f0a448de">
 <br>
 <br>
 

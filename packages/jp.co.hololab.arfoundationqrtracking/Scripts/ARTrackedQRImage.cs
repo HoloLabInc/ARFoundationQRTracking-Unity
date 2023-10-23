@@ -15,8 +15,8 @@ namespace HoloLab.ARFoundationQRTracking
         {
             get
             {
-#if UNITY_IOS
-                var estimatedScale = HoloLab.ARFoundationQRTracking.iOS.ARKitImageScaleEstimationInterop.GetEstimatedScale(ARTrackedImage);
+#if UNITY_IOS && !UNITY_EDITOR
+                var estimatedScale = iOS.ARKitImageScaleEstimationInterop.GetEstimatedScale(ARTrackedImage);
                 return estimatedScale != 1.0;
 #endif
                 return true;
@@ -30,8 +30,8 @@ namespace HoloLab.ARFoundationQRTracking
             get
             {
                 var imageSize = ARTrackedImage.size;
-#if UNITY_IOS
-                imageSize *= HoloLab.ARFoundationQRTracking.iOS.ARKitImageScaleEstimationInterop.GetEstimatedScale(ARTrackedImage);
+#if UNITY_IOS && !UNITY_EDITOR
+                imageSize *= iOS.ARKitImageScaleEstimationInterop.GetEstimatedScale(ARTrackedImage);
 #endif
                 return imageSize * (1 - marginRatio);
             }

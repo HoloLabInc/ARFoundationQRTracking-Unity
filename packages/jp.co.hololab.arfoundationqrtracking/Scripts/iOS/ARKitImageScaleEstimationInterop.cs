@@ -1,7 +1,7 @@
 // Code referenced from the following link:
 // https://github.com/Unity-Technologies/arfoundation-samples/issues/1065#issuecomment-1631739237
 
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine.XR.ARFoundation;
@@ -11,7 +11,7 @@ namespace HoloLab.ARFoundationQRTracking.iOS
 {
     public static class ARKitImageScaleEstimationInterop
     {
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
         public struct NativePtrData
         {
             public int version;
