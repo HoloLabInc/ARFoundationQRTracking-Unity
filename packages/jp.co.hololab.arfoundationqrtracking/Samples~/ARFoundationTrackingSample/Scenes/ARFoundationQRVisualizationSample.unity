@@ -464,7 +464,6 @@ GameObject:
   - component: {fileID: 1840088803}
   - component: {fileID: 1840088805}
   - component: {fileID: 1840088806}
-  - component: {fileID: 1840088807}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -529,16 +528,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qrDetectionIntervalMilliseconds: 1000
---- !u!114 &1840088807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840088802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0fdc8763c123e4b8cbc200734036c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  session: {fileID: 1836029768}
