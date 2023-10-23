@@ -64,8 +64,25 @@ namespace HoloLab.ARFoundationQRTracking
         private void Awake()
         {
             cameraManager = FindObjectOfType<ARCameraManager>();
+            if (cameraManager == null)
+            {
+                Debug.LogError("ARCameraManager not found in scene.");
+                return;
+            }
 
             arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+            if (arTrackedImageManager == null)
+            {
+                Debug.LogError("ARTrackedImageManager not found in scene.");
+                return;
+            }
+
+#if UNITY_IOS
+            if (arTrackedImageManager.requestedMaxNumberOfMovingImages == 0)
+            {
+                Debug.LogError("Max Number Of Moving Images of ARTrackedImagaManager should be more than 0.");
+            }
+#endif
 
             try
             {
@@ -88,14 +105,28 @@ namespace HoloLab.ARFoundationQRTracking
 
         void OnEnable()
         {
-            cameraManager.frameReceived += OnCameraFrameReceived;
-            arTrackedImageManager.trackedImagesChanged += ARTrackedImageManager_trackedImagesChanged;
+            if (cameraManager != null)
+            {
+                cameraManager.frameReceived += OnCameraFrameReceived;
+            }
+
+            if (arTrackedImageManager != null)
+            {
+                arTrackedImageManager.trackedImagesChanged += ARTrackedImageManager_trackedImagesChanged;
+            }
         }
 
         void OnDisable()
         {
-            cameraManager.frameReceived -= OnCameraFrameReceived;
-            arTrackedImageManager.trackedImagesChanged -= ARTrackedImageManager_trackedImagesChanged;
+            if (cameraManager != null)
+            {
+                cameraManager.frameReceived -= OnCameraFrameReceived;
+            }
+
+            if (arTrackedImageManager != null)
+            {
+                arTrackedImageManager.trackedImagesChanged -= ARTrackedImageManager_trackedImagesChanged;
+            }
         }
 
         private void ARTrackedImageManager_trackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
