@@ -7,8 +7,11 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using ZXing;
-
 using ZXingResult = ZXing.Result;
+
+#if UNITY_IOS
+using HoloLab.ARFoundationQRTracking.iOS;
+#endif
 
 namespace HoloLab.ARFoundationQRTracking
 {
@@ -63,8 +66,24 @@ namespace HoloLab.ARFoundationQRTracking
             cameraManager = FindObjectOfType<ARCameraManager>();
 
             arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-            imageLibrary = arTrackedImageManager.CreateRuntimeLibrary() as MutableRuntimeReferenceImageLibrary;
-            arTrackedImageManager.referenceLibrary = imageLibrary;
+
+            try
+            {
+                imageLibrary = arTrackedImageManager.CreateRuntimeLibrary() as MutableRuntimeReferenceImageLibrary;
+                arTrackedImageManager.referenceLibrary = imageLibrary;
+            }
+            catch (NotSupportedException ex)
+            {
+                Debug.LogWarning(ex.Message);
+            }
+
+#if UNITY_IOS
+            var enableScaleEstimationForARKit = FindObjectOfType<EnableScaleEstimationForARKit>();
+            if (enableScaleEstimationForARKit == null)
+            {
+                gameObject.AddComponent<EnableScaleEstimationForARKit>();
+            }
+#endif
         }
 
         void OnEnable()
@@ -180,6 +199,12 @@ namespace HoloLab.ARFoundationQRTracking
 
         private bool AddTrackingTarget(ZXingResult result)
         {
+            if (imageLibrary == null)
+            {
+                Debug.LogWarning("Image tracking is not available.");
+                return false;
+            }
+
             if (ZXingQRUtility.TryGetCellSize(result, out var cellSize) == false)
             {
                 return false;
