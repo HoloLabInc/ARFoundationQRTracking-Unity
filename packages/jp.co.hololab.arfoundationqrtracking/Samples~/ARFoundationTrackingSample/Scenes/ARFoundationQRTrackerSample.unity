@@ -594,7 +594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2030424627234449658, guid: dc2a6438abe497744bbe7faac36eb53c, type: 3}
       propertyPath: m_Name
-      value: QRTracker
+      value: QRTracker (Please set your QR text in inspector)
       objectReference: {fileID: 0}
     - target: {fileID: 2030424627234449659, guid: dc2a6438abe497744bbe7faac36eb53c, type: 3}
       propertyPath: m_RootOrder
