@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ARFoundationQRTracking.Samples/ARFoundationTrackingSample/Scenes/ARFoundationQRTrackerSample.unity
+    guid: 744159d42a43a20499fcbb379c417cae
+  - enabled: 1
     path: Assets/ARFoundationQRTracking.Samples/ARFoundationTrackingSample/Scenes/ARFoundationQRVisualizationSample.unity
     guid: 345ee45186083674592ed67b13839ea6
   m_configObjects:

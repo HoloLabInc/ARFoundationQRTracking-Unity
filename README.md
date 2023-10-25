@@ -31,15 +31,6 @@ Open `Packages\manifest.json` and add the following lines to the "dependencies" 
 
 ## Usage
 
-### a. Use sample scene
-
-Open "Package Manager" and select "AR Foundation QR Tracking" from the package list.  
-Then click the "Import" button of ARFoundationTrackingSample.
-
-`ARFoundationQRVisualizationSample.unity` is a sample scene for QR Code tracking.
-
-### b. Use your scene
-
 Add the following components to the "AR Session Origin" object.
 
 - `AR Tracked Image Manager`
@@ -51,11 +42,33 @@ Then set the `Max Number Of Moving Images` value in the `AR Tracked Image Manage
 <br>
 <br>
 
-When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.  
+### QR tracking
+
+If you want to make a GameObject follow a specific QR code, please use the QRTracker prefab or the QRTracker script.
+
+<img width="357" alt="image" src="https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/assets/4415085/476ce0cc-c001-4075-801e-8af22a381468">
+
+### Event handling
+
+If you want to implement more complex behavior, you can use recognition events.
+When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.
 For more details, please refer to the sample scripts.
 
-- [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
-- [TrackedQRVisualizer.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/TrackedQRVisualizer.cs)
+- [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/main/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
+- [TrackedQRVisualizer.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/main/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/TrackedQRVisualizer.cs)
+
+## Sample scenes
+
+Open "Package Manager" and select "AR Foundation QR Tracking" from the package list.
+Then click the "Import" button of ARFoundationTrackingSample.
+
+### ARFoundationQRTrackerSample.unity
+
+This is a sample scene that displays a cube object following a specific QR code using QRTracker prefab.
+
+### ARFoundationQRVisualizationSample.unity
+
+This is a sample scene for event handling.
 
 ## Limitations
 
