@@ -54,19 +54,19 @@ If you want to implement more complex behavior, you can use recognition events.
 When the QR Code is detected, the `OnTrackedQRImagesChanged` event of `ARFoundationQRTracker` is called.
 For more details, please refer to the sample scripts.
 
-- [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
-- [TrackedQRVisualizer.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/doc/readme/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/TrackedQRVisualizer.cs)
+- [QRVisualizationSample.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/main/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/QRVisualizationSample.cs)
+- [TrackedQRVisualizer.cs](https://github.com/HoloLabInc/ARFoundationQRTracking-Unity/blob/main/packages/jp.co.hololab.arfoundationqrtracking/Samples~/ARFoundationTrackingSample/Scripts/TrackedQRVisualizer.cs)
 
 ## Sample scenes
 
 Open "Package Manager" and select "AR Foundation QR Tracking" from the package list.
 Then click the "Import" button of ARFoundationTrackingSample.
 
-### `ARFoundationQRTrackerSample.unity`
+### ARFoundationQRTrackerSample.unity
 
 This is a sample scene that displays a cube object following a specific QR code using QRTracker prefab.
 
-### `ARFoundationQRVisualizationSample.unity`
+### ARFoundationQRVisualizationSample.unity
 
 This is a sample scene for event handling.
 
