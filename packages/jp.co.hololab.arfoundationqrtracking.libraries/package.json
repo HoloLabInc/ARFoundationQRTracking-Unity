@@ -1,6 +1,6 @@
 {
   "name": "jp.co.hololab.arfoundationqrtracking.libraries",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "AR Foundation QR Tracking Libraries",
   "description": "Libraries for AR Foundation QR Tracking",
   "unity": "2021.3",

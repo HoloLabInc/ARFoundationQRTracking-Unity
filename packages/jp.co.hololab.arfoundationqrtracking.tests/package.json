@@ -1,6 +1,6 @@
 {
   "name": "jp.co.hololab.arfoundationqrtracking.tests",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "AR Foundation QR Tracking Tests",
   "description": "Tests for AR Foundation QR Tracking package",
   "unity": "2021.3",
