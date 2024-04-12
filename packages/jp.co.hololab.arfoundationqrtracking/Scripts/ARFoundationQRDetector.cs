@@ -19,7 +19,7 @@ namespace HoloLab.ARFoundationQRTracking
                 AutoRotate = false,
                 Options = new ZXing.Common.DecodingOptions
                 {
-                    TryHarder = false,
+                    TryHarder = true,
                     PossibleFormats = new[]
                     {
                         BarcodeFormat.QR_CODE
