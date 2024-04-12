@@ -218,7 +218,7 @@ namespace HoloLab.ARFoundationQRTracking
                     continue;
                 }
 
-                var success = AddTrackingTarget(result);
+                var success = await AddTrackingTargetAsync(result);
                 if (success)
                 {
                     arTrackedImageManager.enabled = true;
@@ -228,7 +228,7 @@ namespace HoloLab.ARFoundationQRTracking
             qrDetectionProcessing = false;
         }
 
-        private bool AddTrackingTarget(ZXingResult result)
+        private async UniTask<bool> AddTrackingTargetAsync(ZXingResult result)
         {
             if (imageLibrary == null)
             {
@@ -266,9 +266,32 @@ namespace HoloLab.ARFoundationQRTracking
 #else
             float? widthInMeters = null;
 #endif
-            imageLibrary.ScheduleAddImageWithValidationJob(qrImageTexture, id, widthInMeters);
 
-            return true;
+            while (true)
+            {
+                var jobState = imageLibrary.ScheduleAddImageWithValidationJob(qrImageTexture, id, widthInMeters);
+
+                while (true)
+                {
+                    if (jobState.jobHandle.IsCompleted)
+                    {
+                        break;
+                    }
+
+                    await UniTask.Delay(100);
+                    continue;
+                }
+
+                if (jobState.status == AddReferenceImageJobStatus.Success)
+                {
+                    return true;
+                }
+
+                Debug.LogWarning($"Failed to add reference image: {jobState.status}");
+
+                // Wait and retry job
+                await UniTask.Delay(1000);
+            }
         }
 
         private bool IsTracked(ZXingResult result)
