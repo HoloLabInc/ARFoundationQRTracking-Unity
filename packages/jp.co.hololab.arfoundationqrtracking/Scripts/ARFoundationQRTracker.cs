@@ -32,6 +32,18 @@ namespace HoloLab.ARFoundationQRTracking
         }
     }
 
+    public class QRInfo
+    {
+        public string Text { get; }
+        public byte[] RawBytes { get; }
+
+        public QRInfo(string text, byte[] rawBytes)
+        {
+            Text = text;
+            RawBytes = rawBytes;
+        }
+    }
+
     public class ARFoundationQRTracker : MonoBehaviour
     {
         [SerializeField]
@@ -59,6 +71,7 @@ namespace HoloLab.ARFoundationQRTracking
 
         private const int qrImageMargin = 1;
 
+        public event Action<QRInfo> OnTrackingTargetAdded;
         public event Action<ARTrackedQRImagesChangedEventArgs> OnTrackedQRImagesChanged;
 
         private void Awake()
@@ -222,6 +235,7 @@ namespace HoloLab.ARFoundationQRTracking
                 if (success)
                 {
                     arTrackedImageManager.enabled = true;
+                    InvokeOnTrackingTargetAdded(result);
                 }
             }
 
@@ -297,6 +311,19 @@ namespace HoloLab.ARFoundationQRTracking
         private bool IsTracked(ZXingResult result)
         {
             return trackedZXingResults.Values.Any(x => IsSameZXingResult(x, result));
+        }
+
+        private void InvokeOnTrackingTargetAdded(ZXingResult result)
+        {
+            try
+            {
+                var qrInfo = new QRInfo(result.Text, result.RawBytes);
+                OnTrackingTargetAdded?.Invoke(qrInfo);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
         }
 
         private string GenerateUniqueId()
